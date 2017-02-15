@@ -5,14 +5,29 @@
 	</head>
   <body>
   	<div class='container-fluid'>
-      <h1>drchrono Reminder Portal</h2>
-    <h1><br><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Do any of my patients have birthdays today?</h1>
-    {% for b in bdays %}
-      <h2> {{ b }}</h2>
-    {% endfor %}
-    {% if bdays|length == 0 %}
-      <h2>Nope, no birthdays today!</h2>
-    {% endif %}
+      {% if drchrono_login == None %}
+
+        <h1>To use this feature, please authorize the application <a href='/'>here</a></h1>
+
+      {% else %}
+
+        <h1>drchrono Reminder Portal</h2>
+
+      <h1><br><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Do any of my patients have birthdays today?</h1>
+
+      {% for b in bdays %}
+
+        <h2>{{ b }}</h2>
+
+      {% endfor %}
+
+      {% if bdays|length == 0 %}
+      
+        <h2>Nope, no birthdays today!</h2>
+
+      {% endif %}
+
+      {% endif %}
   </div>
   </body>
 </html>

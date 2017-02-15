@@ -17,21 +17,26 @@ def reminder(request):
 		drchrono_login = user.social_auth.get(provider='drchrono')
 	except UserSocialAuth.DoesNotExist:
 		drchrono_login = None
-	access_token_auth = 'Bearer ' + str(drchrono_login.access_token)
-	print access_token_auth
-	headers = {
-    'Authorization': access_token_auth
-}
-	bdays = []
-	today = datetime.now().strftime('%m-%d')
-	patients_url = 'https://drchrono.com/api/patients_summary'
-	data = requests.get(patients_url, headers=headers)
-	d = data.json()
-	for entry in d['results']:
-	    if str(entry['date_of_birth']).endswith(today):
-	        bdays.append((str(entry['first_name']) + ' ' + str(entry['last_name'])))
-	context = {'bdays': bdays, 'drchrono_login': drchrono_login}
-	return render(request, 'reminder.html', context)
+	except AttributeError:
+		drchrono_login = None
+	if drchrono_login is not None:
+		access_token_auth = 'Bearer ' + str(drchrono_login.access_token)
+		print access_token_auth
+		headers = {
+	    'Authorization': access_token_auth
+	}
+		bdays = []
+		today = datetime.now().strftime('%m-%d')
+		patients_url = 'https://drchrono.com/api/patients_summary'
+		data = requests.get(patients_url, headers=headers)
+		d = data.json()
+		for entry in d['results']:
+		    if str(entry['date_of_birth']).endswith(today):
+		        bdays.append((str(entry['first_name']) + ' ' + str(entry['last_name'])))
+		context = {'bdays': bdays, 'drchrono_login': drchrono_login}
+		return render(request, 'reminder.html', context)
+	return render(request, 'reminder.html')
+
 
 
 
