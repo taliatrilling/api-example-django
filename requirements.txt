@@ -1,5 +1,7 @@
 appdirs==1.4.0
+beautifulsoup4==4.5.3
 Django==1.8.3
+django-webtest==1.8.0
 funcsigs==1.0.2
 httplib2==0.10.3
 httpretty==0.8.14
@@ -24,5 +26,7 @@ rsa==3.4.2
 six==1.10.0
 social-auth-app-django==1.1.0
 social-auth-core==1.2.0
-traceback2==1.4.0
 unittest2==1.1.0
+waitress==1.0.2
+WebOb==1.7.1
+WebTest==2.0.25
