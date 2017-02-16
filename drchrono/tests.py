@@ -1,4 +1,8 @@
-from django.test import Client
+from django.test.client import Client
+
+from django.conf import settings
+
+from django.utils.importlib import import_module
 
 import requests
 
@@ -8,9 +12,14 @@ import os
 
 import unittest
 
-from django_webtest import WebTest
+from django.test import LiveServerTestCase
+
+from selenium import webdriver
+
+import time
 
 SOCIAL_AUTH_DRCHRONO_KEY = os.environ['SOCIAL_AUTH_DRCHRONO_KEY']
+PASSWORD = os.environ['DR_CHRONO_SITE_PASS']
 
 #testing requirements/suggestions taken from https://python-social-auth-docs.readthedocs.io/en/latest/tests.html
 
@@ -40,14 +49,29 @@ class NotLoggedInTestCases(unittest.TestCase):
 		result = self.client.get('/')
 		self.assertIn('drchrono OAuth', result.content)
 
-class LoggedInTestCases(WebTest):
+class LoggedInTestCases(LiveServerTestCase):
 	"""Test reminder page when application has been authorized"""
 
 	def test_Loggedin(self):
-		pass
 
+		driver = webdriver.Chrome('/Users/taliatrilling/Downloads/chromedriver') 
+		time.sleep(5);
+		driver.get('http://localhost:8000/')
+		time.sleep(5);
+		btn = driver.find_element_by_id('auth')
+		btn.click()
+		username = driver.find_element_by_id('username')
+		username.send_keys('taliatrilling')
+		password = driver.find_element_by_id('password')
+		password.send_keys(PASSWORD)
+		login = driver.find_element_by_id('login')
+		login.submit()
+		cookies = driver.get_cookies()
+		for cookie in cookies:
+			print cookie
+	
+		# #driver.quit()
 
-		
 
 
 
