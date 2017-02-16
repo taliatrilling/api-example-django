@@ -12,6 +12,9 @@ import requests
 
 
 def reminder(request):
+	"""Page with reminders of patient birthdays, including error handling if user navigates to
+	without authorizing/logging in"""
+
 	user = request.user
 	try:
 		drchrono_login = user.social_auth.get(provider='drchrono')
@@ -21,7 +24,6 @@ def reminder(request):
 		drchrono_login = None
 	if drchrono_login is not None:
 		access_token_auth = 'Bearer ' + str(drchrono_login.access_token)
-		print access_token_auth
 		headers = {
 	    'Authorization': access_token_auth
 	}

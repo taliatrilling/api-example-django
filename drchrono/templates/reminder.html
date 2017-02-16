@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' href='/static/base.css'>
 	</head>
   <body>
   	<div class='container-fluid'>
@@ -13,7 +14,7 @@
 
         <h1>drchrono Reminder Portal</h2>
 
-      <h1><br><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Do any of my patients have birthdays today?</h1>
+        <h1><br><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Do any of my patients have birthdays today?</h1>
 
       {% for b in bdays %}
 
@@ -22,12 +23,15 @@
       {% endfor %}
 
       {% if bdays|length == 0 %}
-      
+
         <h2>Nope, no birthdays today!</h2>
 
       {% endif %}
 
       {% endif %}
+
+       <a class='btn btn-primary btn-lg' href='https://www.drchrono.com/'>
+      <span class='glyphicon glyphicon-home' aria-hidden='true'></span>  return to drchrono Home</a>
   </div>
   </body>
 </html>

@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+    <link rel='stylesheet' type='text/css' href='/static/base.css'>
 	</head>
   <body>
   	<div class='container-fluid'>
-      <h1>drchrono Reminder Portal</h2>
-    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span><a href='{% url 'social:begin' 'drchrono' %}'>
-      drchrono OAuth
-    </a>
+      <h1>drchrono Reminder Portal</h1>
+
+    <a class='btn btn-primary btn-lg' href='{% url 'social:begin' 'drchrono' %}'>
+      <span class='glyphicon glyphicon-log-in' aria-hidden='true'></span>  drchrono OAuth</a><br><br>
+
+    <a class='btn btn-primary btn-lg' href='https://www.drchrono.com/'>
+      <span class='glyphicon glyphicon-home' aria-hidden='true'></span>  drchrono Home</a>
   </div>
   </body>
 </html>

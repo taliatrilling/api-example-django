@@ -1,11 +1,16 @@
 appdirs==1.4.0
 Django==1.8.3
+funcsigs==1.0.2
 httplib2==0.10.3
+httpretty==0.8.14
+linecache2==1.0.0
+mock==2.0.0
 oauth==1.0.1
 oauth2==1.5.211
 oauth2client==1.4.12
 oauthlib==2.0.0
 packaging==16.8
+pbr==1.10.0
 pyasn1==0.2.2
 pyasn1-modules==0.0.8
 PyJWT==1.4.2
@@ -19,3 +24,5 @@ rsa==3.4.2
 six==1.10.0
 social-auth-app-django==1.1.0
 social-auth-core==1.2.0
+traceback2==1.4.0
+unittest2==1.1.0
